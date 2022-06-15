@@ -4,7 +4,8 @@ class MainController < ApplicationController
   end
 
   def about
-    render('about')
+    @created_by = "Abdullah"
+    #render('about')
   end
 
   def hello
