@@ -21,17 +21,24 @@ class TasksController < ApplicationController
     else
       #The 'new' action is NOT being called here
       # This code just renders a VIEW
-      # We need to assign any instance variables needed
+      # We need to assign any instance variables needed e.g.
       # @count = Task.count
-      #
+
       render('new')
     end
   end
 
   def edit
+    @task = Task.find(params[:id])
   end
 
   def update
+    @task = Task.find(params[:id])
+    if @task.update(task_params)
+        redirect_to task_path(@task)
+    else
+      render('edit')
+    end
   end
 
   def delete
