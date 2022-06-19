@@ -10,7 +10,8 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = Task.new
+    @count = Task.count
+    @task = Task.new(position: @count + 1)
   end
 
   def create
