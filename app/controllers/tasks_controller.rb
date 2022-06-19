@@ -1,14 +1,16 @@
 class TasksController < ApplicationController
+
   def index
-    @page = params[:page].to_i
-    @tasks = ['Fold laundry', 'Sweep porch', 'Wash dishes', 'Mow lawn']
+    @tasks = Task.order(:position)
   end
 
 
   def show
+    @task = Task.find(params[:id])
   end
 
   def new
+    @task = Task.new
   end
 
   def create
